@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace Taller_POO1
 {
     class Principal
     {
         private config.m.Menu configEmpresa;
         private client.m.Menu moduloCliente;
+        private prod.m.Menu moduloProducto;
         private byte opcion, opcion2;
         static void Main(string[] args)
         {
@@ -16,6 +18,10 @@ namespace Taller_POO1
         public Principal()
         {
             opcion2 = 1;
+
+            prod.s.Service.listaProductos = new List<prod.p.Producto>();
+
+            client.s.Service.listaClientes = new List<client.c.Cliente>();
         }
 
         public void Menu()
@@ -57,6 +63,7 @@ namespace Taller_POO1
                 break;
 
                 case 2:
+                    moduloProducto = new prod.m.Menu();
                 break;
 
                 case 3:

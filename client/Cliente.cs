@@ -72,6 +72,8 @@ namespace client.c
 
             foreach(var cliente in query)
             {
+                cliente.DOCUMENTO = documento;
+                
                 cliente.CLIENTE = nombre;
 
                 cliente.DIRECCION = direccion;

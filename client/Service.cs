@@ -8,7 +8,7 @@ namespace client.s
     class Service
     {
         private String nombre, direccion, telefono, documento;
-        public static List<Cliente> listaClientes = new List<Cliente>();
+        public static List<Cliente> listaClientes;
         
         public void insertCliente()
         {
@@ -22,7 +22,7 @@ namespace client.s
             {    
                 if(confirmar.Equals("si"))
                 {
-                    leerDatos(true);
+                    leerDatos();
 
                     if(Cliente.validarDocumento(documento, listaClientes)) Console.WriteLine($"\nEl cliente con el documento '{documento}' ya esta registrado, cliente no registrado");
                     
@@ -107,7 +107,7 @@ namespace client.s
                     {
                         Console.WriteLine("\nPor favor ingrese la nueva informacion del cliente");
 
-                        leerDatos(false);
+                        leerDatos();
 
                         if(Cliente.validaciones(listaClientes, nombre, documento, direccion, telefono))
                         {
@@ -121,7 +121,7 @@ namespace client.s
 
                 else Console.WriteLine("\nRespuesta incorrecta, debes responder si o no");
                     
-                Console.WriteLine("\n¿Quiere modificar otro cliente? ");
+                Console.WriteLine("\n¿Quiere modificar un cliente? ");
 
                 confirmar = Console.ReadLine();
             }
@@ -164,15 +164,12 @@ namespace client.s
             }
         }
 
-        void leerDatos(Boolean confirmar)
+        void leerDatos()
         {
-            if(confirmar) 
-            {
-                Console.Write("\nDocumento: ");
+            Console.Write("\nDocumento: ");
 
-                documento = Console.ReadLine();
-            }
-        
+            documento = Console.ReadLine();
+            
             Console.Write("Nombre: ");
 
             nombre = Console.ReadLine();
