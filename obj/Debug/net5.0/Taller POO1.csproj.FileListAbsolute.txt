@@ -1,0 +1,16 @@
+E:\Taller POO1\bin\Debug\net5.0\Taller POO1.exe
+E:\Taller POO1\bin\Debug\net5.0\Taller POO1.deps.json
+E:\Taller POO1\bin\Debug\net5.0\Taller POO1.runtimeconfig.json
+E:\Taller POO1\bin\Debug\net5.0\Taller POO1.runtimeconfig.dev.json
+E:\Taller POO1\bin\Debug\net5.0\Taller POO1.dll
+E:\Taller POO1\bin\Debug\net5.0\ref\Taller POO1.dll
+E:\Taller POO1\bin\Debug\net5.0\Taller POO1.pdb
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.csproj.AssemblyReference.cache
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.AssemblyInfoInputs.cache
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.AssemblyInfo.cs
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.csproj.CoreCompileInputs.cache
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.dll
+E:\Taller POO1\obj\Debug\net5.0\ref\Taller POO1.dll
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.pdb
+E:\Taller POO1\obj\Debug\net5.0\Taller POO1.genruntimeconfig.cache
