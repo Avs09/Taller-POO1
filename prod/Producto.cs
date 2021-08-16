@@ -22,7 +22,7 @@ namespace prod.p
 
         public double PRECIO {get; set;}
 
-        public int CANTIDAD {get; set;}
+        public int? CANTIDAD {get; set;}
 
         public string CODIGO {get; set;}
 
@@ -52,9 +52,11 @@ namespace prod.p
         {
             if(String.IsNullOrEmpty(producto) || String.IsNullOrEmpty(codigo) || precio == null || cantidad == null)  Console.WriteLine("\nNingun campo puede estar vacio o nulo, producto no registrado");
             
+            else if(Regex.IsMatch(codigo, @"^[0-9]+$") == false) Console.WriteLine("\nEl codigo solo debe contener numeros");
+
             else if(Regex.IsMatch(producto, @"^[0-9]+$")) Console.WriteLine("\nEl producto solo puede contener caracteres");
 
-            else if(Regex.IsMatch(codigo, @"^[0-9]+$") == false) Console.WriteLine("\nEl codigo solo debe contener numeros");
+            else if(compararProducto(listaProductos, producto)== false) Console.WriteLine("\nYa existe un producto con el nombre de '{0}' ", producto);
 
             else if(precio <= 0 || cantidad <= 0) Console.WriteLine("\nEl precio y/o la cantidad no deben ser menores o igual a cero");
             
@@ -99,5 +101,22 @@ namespace prod.p
             Console.WriteLine("\nEl producto con el codigo '{0}' ha sido modificado correctamente", codigo);
         }
         public static Boolean validarCodigo(String codigo, List<Producto> listaProductos) => listaProductos.Any(producto => producto.CODIGO.Equals(codigo)) ? true : false;
+
+        public static Boolean compararProducto(List<Producto> listaProductos, String producto)
+        {
+            String productoA = "";
+
+            foreach(var prod in listaProductos)
+            {
+                productoA = prod.PRODUCTO;
+
+                if(listaProductos.Exists(p=> producto.Equals(productoA)))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

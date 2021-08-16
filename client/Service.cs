@@ -42,7 +42,6 @@ namespace client.s
                 Console.WriteLine("\n¿Quiere registrar un cliente? ");
 
                 confirmar = Console.ReadLine();
-                
             }
         }
 
