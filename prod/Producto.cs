@@ -102,7 +102,7 @@ namespace prod.p
         }
         public static Boolean validarCodigo(String codigo, List<Producto> listaProductos) => listaProductos.Any(producto => producto.CODIGO.Equals(codigo)) ? true : false;
 
-        public static Boolean compararProducto(List<Producto> listaProductos, String producto)
+        static Boolean compararProducto(List<Producto> listaProductos, String producto)
         {
             String productoA = "";
 

@@ -9,13 +9,15 @@ namespace venta.v
 {
     class Venta : Factura{
 
-        public Venta(String documento, String fecha, int cantidad, int numFactura, double valorTotal, String producto, double valorP, Boolean deshabilitar)
+        public Venta(String documento, String fecha, String codigo, int cantidad, int numFactura, double valorTotal, String producto, double valorP, Boolean deshabilitar)
         {
             DOCUMENTO = documento;
 
             PRODUCTO = producto;
 
             FECHA = fecha;
+
+            CODIGO = codigo;
 
             CANTIDAD = cantidad;
 
@@ -31,6 +33,7 @@ namespace venta.v
         public String DOCUMENTO {get; set;}
         public String PRODUCTO {get; set;}
         public String FECHA {get; set;}
+        public String CODIGO {get; set;}
         public int CANTIDAD {get; set;}
         public int NUMFACTURA {get; set;}
         public double VALORTOTAL {get; set;}
@@ -62,12 +65,6 @@ namespace venta.v
 
         static Boolean validarProducto(String producto) => prod.s.Service.listaProductos.Any(prod => prod.PRODUCTO.Equals(producto)) ? true : false;
 
-        static List<prod.p.Producto> getProducto(String producto)
-        {
-            var query = prod.s.Service.listaProductos.Where(prod => prod.PRODUCTO.Equals(producto)).ToList();
-
-            return query;
-        }
         static Boolean validarCantProducto(int? cantidad, String producto)
         {
             if(cantidad > getCantProd(producto, cantidad)) return false;
@@ -75,7 +72,7 @@ namespace venta.v
             return true;
         }
 
-        static List<prod.p.Producto> getCodigoProductoSelect(String producto)
+        static List<prod.p.Producto> getProductoSelect(String producto)
         {
             String codigo = "";
 
@@ -97,7 +94,7 @@ namespace venta.v
 
             int? cant = 0;
 
-            foreach(var prod in getCodigoProductoSelect(producto))
+            foreach(var prod in getProductoSelect(producto))
             {
                 if(c) 
                 {
@@ -116,7 +113,7 @@ namespace venta.v
         {
             int? cant = 0;
 
-            foreach(var prod in getCodigoProductoSelect(producto))
+            foreach(var prod in getProductoSelect(producto))
             {
                 cant = prod.CANTIDAD;
             }
@@ -128,7 +125,7 @@ namespace venta.v
         {
             double valorT = 0;
 
-            foreach(var prod in getCodigoProductoSelect(producto))
+            foreach(var prod in getProductoSelect(producto))
             {
                 valorT = prod.PRECIO * cantidad;
             }
@@ -140,7 +137,7 @@ namespace venta.v
         {
             double valor = 0;
 
-            foreach(var prod in getCodigoProductoSelect(producto))
+            foreach(var prod in getProductoSelect(producto))
             {
                 valor = prod.PRECIO;
             }
@@ -158,10 +155,22 @@ namespace venta.v
 
             foreach(var factura in query)
             {
-                Factura.encabezado(factura.DOCUMENTO, factura.VALORTOTAL, factura.NUMFACTURA);
+                Factura.encabezado(factura.DOCUMENTO, factura.VALORTOTAL, factura.NUMFACTURA, factura.CODIGO);
 
                 Factura.detalle(factura.PRODUCTO, factura.CANTIDAD, factura.VALORP, factura.FECHA);
             }
+        }
+
+        public static String getCodigo(String producto)
+        {
+            String codigo = "";
+
+            foreach(var prod in getProductoSelect(producto))
+            {
+                codigo = prod.CODIGO;
+            }
+
+            return codigo;
         }
     }
 }

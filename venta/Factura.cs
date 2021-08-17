@@ -8,11 +8,13 @@ namespace venta.f
 {
     class Factura
     {
-        protected static void encabezado(String documento, double valorTotal, int numFactura)
+        protected static void encabezado(String documento, double valorTotal, int numFactura, String codigo)
         {
             Console.WriteLine("N° factura: " + numFactura);
 
             Console.WriteLine("Documento: " + documento);
+
+            Console.WriteLine("Codigo producto: " + codigo);
 
             Console.WriteLine("Precio total: $" + valorTotal);
         }

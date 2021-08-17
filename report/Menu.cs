@@ -1,34 +1,32 @@
 using System;
-using prod.s;
+using report.s;
 
-namespace prod.m
+namespace report.m
 {
     class Menu
     {
         private byte opcion;
-        private static Service serviciosProducto;
+        private static Service serviciosReporte;
         public Menu()
         {
-            serviciosProducto = new Service();
+            serviciosReporte = new Service();
 
             do{
-                Console.WriteLine($"\n*** BIENVENIDO/A AL MODULO DE PRODUCTOS - EMPRESA {config.m.Menu.empresas.EMPRESA} ***\n");
+                Console.WriteLine($"\n*** MODULO DE REPORTES - EMPRESA {config.m.Menu.empresas.EMPRESA} ***\n");
 
-                Console.WriteLine("1 para: CREAR PRODUCTO");
+                Console.WriteLine("Menu\n1 para: LISTAR CLIENTES");
 
-                Console.WriteLine("2 para: BUSCAR PRODUCTO");
+                Console.WriteLine("2 para: LISTAR PRODUCTO");
 
-                Console.WriteLine("3 para: MODIFICAR PRODUCTO");
+                Console.WriteLine("3 para: LISTAR FACTURAS");
 
-                Console.WriteLine("4 para: ELIMINAR PRODUCTO");
-
-                Console.WriteLine("5 para: SALIR");
+                Console.WriteLine("4 para: SALIR");
 
                 catchFallos();
             }
-            while(opcion != 5);
+            while(opcion != 4);
 
-            Console.WriteLine("\nHAS SALIDO DEL MODULO PRODUCTOS, VUELVE PRONTO");
+            Console.WriteLine("\nHAS SALIDO DEL MODULO REPORTES, VUELVE PRONTO");
         }
 
         void validarOpcion()
@@ -36,23 +34,19 @@ namespace prod.m
             switch(opcion)
             {
                 case 1:
-                    serviciosProducto.insertProducto();
+                    serviciosReporte.listarClientes();
                 break;
 
                 case 2:
-                    serviciosProducto.selectProducto();
+                    serviciosReporte.listarProductos();
                 break;
 
                 case 3:
-                    serviciosProducto.updateProducto();
-                break;
-
-                case 4:
-                    serviciosProducto.deleteProducto();
+                    serviciosReporte.listarFacturas();
                 break;
 
                 default:
-                    if(opcion != 5) throw new ArgumentOutOfRangeException();
+                    if(opcion != 4) throw new ArgumentOutOfRangeException();
                 break;
             }
         }

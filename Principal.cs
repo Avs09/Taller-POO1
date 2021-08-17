@@ -8,7 +8,8 @@ namespace Taller_POO1
         private client.m.Menu moduloCliente;
         private prod.m.Menu moduloProducto;
         private venta.m.Menu moduloVenta;
-        private byte opcion, opcion2;
+        private report.m.Menu moduloReporte;
+        private byte opcion;
         static void Main(string[] args)
         {
             Principal menuPrincipal = new Principal();
@@ -18,8 +19,6 @@ namespace Taller_POO1
 
         public Principal()
         {
-            opcion2 = 1;
-
             prod.s.Service.listaProductos = new List<prod.p.Producto>();
 
             client.s.Service.listaClientes = new List<client.c.Cliente>();
@@ -29,6 +28,8 @@ namespace Taller_POO1
 
         public void Menu()
         {
+            byte opcion2 = 1;
+            
             do
             {
                 configEmpresa = new config.m.Menu();
@@ -74,6 +75,7 @@ namespace Taller_POO1
                 break;
 
                 case 4:
+                    moduloReporte = new report.m.Menu();
                 break;
 
                 case 5:

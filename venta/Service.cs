@@ -30,9 +30,11 @@ namespace venta.s
                     {
                         Venta.descontarCantProd(producto, cantidad);
 
-                        listaVentas.Add(new Venta(documento, DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"), cantidad, numFactura, Venta.getValorTotal(producto, cantidad), producto, Venta.getValorP(producto), false));
+                        listaVentas.Add(new Venta(documento, DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"), Venta.getCodigo(producto), cantidad, numFactura, Venta.getValorTotal(producto, cantidad), producto, Venta.getValorP(producto), false));
 
                         Console.WriteLine("Numero de factura: " + numFactura);
+
+                        Console.WriteLine("\nLa venta se ha realizado correctamente");
 
                         numFactura++;
                     }

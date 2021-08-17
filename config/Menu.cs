@@ -1,14 +1,16 @@
 using System;
 using config.c;
-
+using config.s;
 namespace config.m
 {
     class Menu
     {
         public static ConfigurarEmpresa empresas;
+        private Service serviciosEmpresa;
         private byte opcion;
         public Menu()
         {
+            serviciosEmpresa = new Service();
             do
             {
                 Console.WriteLine("\n*** MENU CONFIGURAR EMPRESA ***\n");
@@ -60,7 +62,15 @@ namespace config.m
             }
             else if(opcion == 2)
             {
+                serviciosEmpresa.insertDiezClientes();
 
+                Console.WriteLine("\nLos 10 clientes fueron creados correctamente");
+
+                serviciosEmpresa.insertDiezProductos();
+
+                Console.WriteLine("\nLos 10 productos fueron creados correctamente");
+
+                serviciosEmpresa.setNombreEmpresa("Aloa");
             }
 
             else throw new ArgumentOutOfRangeException();
